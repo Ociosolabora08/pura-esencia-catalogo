@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Next.js 16 se despliega en Netlify vía el adaptador OpenNext (automático).
+# Las variables DATABASE_URL, DATABASE_AUTH_TOKEN, ADMIN_SESSION_SECRET y
+# NEXT_PUBLIC_SITE_URL se configuran en la UI del sitio (nunca en este archivo).
+
+[[headers]]
+  for = "/api/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"

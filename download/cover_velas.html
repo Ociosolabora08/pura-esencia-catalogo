@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      --c-bg: #f5f3ef;
+      --c-accent: #726849;
+      --c-text: #272623;
+      --c-muted: #8b8881;
+      --c-mid: #907521;
+    }
+    html, body { margin: 0; padding: 0; width: 794px; height: 1123px; background: var(--c-bg); color: var(--c-text); font-family: 'Inter', sans-serif; }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: #e8e6e2; }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.15); }
+    }
+    .cover { width: 794px; height: 1123px; position: relative; box-sizing: border-box; }
+    .bg-layer { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+    .grid-line { position: absolute; background: var(--c-accent); opacity: 0.04; }
+    .grid-h { height: 0.5pt; left: 0; right: 0; }
+    .grid-v { width: 0.5pt; top: 0; bottom: 0; }
+    .vline { position: absolute; left: 95px; top: 80px; bottom: 80px; width: 6pt; background: var(--c-accent); z-index: 2; }
+    .content { position: absolute; left: 140px; right: 76px; top: 0; bottom: 0; z-index: 3; }
+    .kicker { position: absolute; top: 168px; font-size: 11pt; color: var(--c-muted); letter-spacing: 3px; text-transform: uppercase; font-family: 'Inter', sans-serif; font-weight: 500; }
+    .title { position: absolute; top: 260px; font-size: 42pt; font-weight: 900; line-height: 1.15; font-family: 'Playfair Display', serif; color: var(--c-text); max-width: 540px; }
+    .summary { position: absolute; top: 530px; font-size: 16pt; line-height: 1.6; color: var(--c-muted); max-width: 480px; font-family: 'Inter', sans-serif; font-weight: 300; }
+    .meta { position: absolute; top: 740px; font-size: 16pt; color: var(--c-accent); font-family: 'Inter', sans-serif; font-weight: 400; }
+    .footer { position: absolute; bottom: 76px; left: 140px; font-size: 10pt; color: var(--c-muted); letter-spacing: 1px; font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="bg-layer">
+      <!-- Grid pattern -->
+      <div class="grid-line grid-h" style="top: 158px;"></div>
+      <div class="grid-line grid-h" style="top: 316px;"></div>
+      <div class="grid-line grid-h" style="top: 474px;"></div>
+      <div class="grid-line grid-h" style="top: 632px;"></div>
+      <div class="grid-line grid-h" style="top: 790px;"></div>
+      <div class="grid-line grid-h" style="top: 948px;"></div>
+      <div class="grid-line grid-v" style="left: 158px;"></div>
+      <div class="grid-line grid-v" style="left: 316px;"></div>
+      <div class="grid-line grid-v" style="left: 474px;"></div>
+      <div class="grid-line grid-v" style="left: 632px;"></div>
+    </div>
+    <div class="vline"></div>
+    <div class="content">
+      <div class="kicker">PLAN ESTRATEGICO 2026</div>
+      <div class="title">E-commerce de Velas<br>Aromaticas via<br>WhatsApp y Telegram</div>
+      <div class="summary">Vender tres velas de ritual (Aurora, Equilibrio, Nectar) a traves de canales digitales gratuitos, generar los primeros ingresos y escalar hacia un negocio sostenible.</div>
+      <div class="meta">Fase 1: Definicion de Producto,<br>Identidad Visual y Estrategia Comercial</div>
+    </div>
+    <div class="footer">COLOMBIA  |  100% GRATUITO  |  WHATSAPP + TELEGRAM</div>
+  </div>
+</body>
+</html>

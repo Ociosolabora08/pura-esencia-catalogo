@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Tokens visuales de Pura Esencia.
+ * Paleta oficial del plan estratégico:
+ *   terracota #726849 · ámbar #907521 · Aurora #D4A843
+ *   Equilibrio #7A9A6D · Nectar #4A5580 · crema #F5F3EF
+ *   carbón #272623 · gris cálido #8B8881
+ * Los valores de color de marca se inyectan desde brand_theme (panel admin)
+ * como variables --brand-*, y alimentan los tokens de shadcn aquí abajo.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-aurora: var(--brand-aurora);
+  --color-equilibrio: var(--brand-equilibrio);
+  --color-nectar: var(--brand-nectar);
+  --color-wa: #25d366;
+  --color-wa-dark: #1fb457;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+}
+
+:root {
+  --radius: 1rem;
+  /* Valores por defecto; el layout los sobreescribe con brand_theme de la BD. */
+  --brand-primary: #726849;
+  --brand-accent: #907521;
+  --brand-background: #f5f3ef;
+  --brand-card: #ffffff;
+  --brand-text: #272623;
+  --brand-muted: #8b8881;
+  --brand-aurora: #d4a843;
+  --brand-equilibrio: #7a9a6d;
+  --brand-nectar: #4a5580;
+
+  --background: var(--brand-background);
+  --foreground: var(--brand-text);
+  --card: var(--brand-card);
+  --card-foreground: var(--brand-text);
+  --popover: var(--brand-card);
+  --popover-foreground: var(--brand-text);
+  --primary: var(--brand-primary);
+  --primary-foreground: #ffffff;
+  --secondary: #ece8e1;
+  --secondary-foreground: var(--brand-text);
+  --muted: #ece8e1;
+  --muted-foreground: var(--brand-muted);
+  --accent: #f0ebe2;
+  --accent-foreground: var(--brand-text);
+  --destructive: #b3452e;
+  --border: #e3ddd2;
+  --input: #ddd6c9;
+  --ring: var(--brand-primary);
+  --brand-aurora: #d4a843;
+  --brand-equilibrio: #7a9a6d;
+  --brand-nectar: #4a5580;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01" on;
+  }
+  /* Foco visible accesible en todo el sitio */
+  :focus-visible {
+    outline: 2px solid var(--brand-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Tipografía editorial para títulos */
+  h1, h2, h3, .font-display {
+    font-family: var(--font-playfair), Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Ocultar scrollbar en navegación horizontal (carruseles) */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Placeholder editorial para productos sin fotografía oficial */
+.product-visual {
+  background:
+    radial-gradient(120% 90% at 20% 10%, color-mix(in srgb, var(--visual-accent, var(--brand-aurora)) 38%, transparent) 0%, transparent 60%),
+    radial-gradient(120% 110% at 85% 90%, color-mix(in srgb, var(--visual-accent, var(--brand-aurora)) 24%, transparent) 0%, transparent 55%),
+    linear-gradient(160deg, color-mix(in srgb, var(--visual-accent, var(--brand-aurora)) 14%, var(--brand-card)) 0%, var(--brand-card) 70%);
+}
+
+/* Sombra cálida de tarjetas */
+.card-shadow {
+  box-shadow:
+    0 1px 2px rgba(39, 38, 35, 0.04),
+    0 8px 24px -12px rgba(114, 104, 73, 0.18);
+}
+
+/* Animación de aparición suave del feed */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.5s ease-out both;
+}
