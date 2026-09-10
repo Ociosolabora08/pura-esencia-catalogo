@@ -5,18 +5,26 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Next.js 16 se despliega en Netlify vía el adaptador OpenNext (automático).
-# Las variables DATABASE_URL, DATABASE_AUTH_TOKEN, ADMIN_SESSION_SECRET y
-# NEXT_PUBLIC_SITE_URL se configuran en la UI del sitio (nunca en este archivo).
-
+# Cache de imágenes por 1 año (inmutable)
 [[headers]]
-  for = "/api/images/*"
+  for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache de assets estáticos por 1 año
 [[headers]]
-  for = "/*"
+  for = "/_next/static/*"
   [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache de fuentes por 1 año
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# No cachear HTML (para ver cambios inmediatos)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
