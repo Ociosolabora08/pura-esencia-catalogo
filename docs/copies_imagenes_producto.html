@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pura Esencia — Copies para Generación de Imágenes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --aurora: #D4A843;
+  --aurora-light: #f9f3e3;
+  --equilibrio: #7A9A6D;
+  --equilibrio-light: #f0f5ed;
+  --nectar: #4A5580;
+  --nectar-light: #eef0f7;
+  --dark: #1a1a2e;
+  --cream: #F5F3EF;
+}
+@page { size: A4; margin: 1.2cm 1.5cm; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.65;
+  color: var(--dark);
+  background: #f5f6fa;
+  padding: 20px;
+}
+.page {
+  max-width: 850px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px 48px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.header {
+  text-align: center;
+  border-bottom: 3px solid var(--aurora);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20pt;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.header h2 {
+  font-size: 11pt;
+  color: #546e7a;
+  font-weight: 400;
+}
+.producto {
+  margin-bottom: 32px;
+  page-break-inside: avoid;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.producto-header {
+  padding: 14px 20px;
+  color: white;
+}
+.producto-header.aurora { background: linear-gradient(135deg, #D4A843, #b8942f); }
+.producto-header.equilibrio { background: linear-gradient(135deg, #7A9A6D, #5a7a4d); }
+.producto-header.nectar { background: linear-gradient(135deg, #4A5580, #3a4570); }
+.producto-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16pt;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.producto-header .momento {
+  font-size: 9pt;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.producto-body {
+  padding: 20px 24px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.info-box {
+  background: #f8f9fa;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+.info-box h4 {
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #546e7a;
+  margin-bottom: 6px;
+}
+.info-box p {
+  font-size: 9.5pt;
+  color: #333;
+}
+.copy-section {
+  margin: 16px 0;
+}
+.copy-section h4 {
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #1a237e;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.copy-box {
+  background: linear-gradient(135deg, #f8f9fa, #e8eaf6);
+  border-left: 4px solid #1a237e;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 10px 0;
+}
+.copy-box.aurora { border-left-color: var(--aurora); background: linear-gradient(135deg, #faf7ed, var(--aurora-light)); }
+.copy-box.equilibrio { border-left-color: var(--equilibrio); background: linear-gradient(135deg, #f5f8f4, var(--equilibrio-light)); }
+.copy-box.nectar { border-left-color: var(--nectar); background: linear-gradient(135deg, #f2f4f9, var(--nectar-light)); }
+.copy-box p {
+  font-size: 10pt;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 8px;
+}
+.copy-box p:last-child { margin-bottom: 0; }
+.copy-box .label {
+  font-weight: 600;
+  color: #1a237e;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.prompt-final {
+  background: #1a237e;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 14px;
+}
+.prompt-final h4 {
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: #ffc107;
+}
+.prompt-final p {
+  font-family: 'Inter', monospace;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  color: #e8eaf6;
+}
+.nota {
+  background: #fff8e1;
+  border-left: 4px solid #ff9800;
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 9pt;
+}
+.footer {
+  text-align: center;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 2px solid var(--aurora);
+  font-size: 8pt;
+  color: #546e7a;
+}
+@media print {
+  body { background: white; padding: 0; }
+  .page { box-shadow: none; padding: 0; }
+  .producto { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <h1>Pura Esencia</h1>
+  <h2>Copies profesionales para generación de imágenes de producto</h2>
+</div>
+
+<!-- ==================== AURORA ==================== -->
+<div class="producto">
+  <div class="producto-header aurora">
+    <h3>✦ Aurora</h3>
+    <div class="momento">Mañana · 6:00 – 11:00 AM</div>
+  </div>
+  <div class="producto-body">
+    
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>Notas Aromáticas</h4>
+        <p>Cítricos, eucalipto, menta</p>
+      </div>
+      <div class="info-box">
+        <h4>Cera</h4>
+        <p>Soja · 180-200 g</p>
+      </div>
+      <div class="info-box">
+        <h4>Factor Diferencial</h4>
+        <p>Energía limpia, despertar con intención</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📸 Escenario</h4>
+      <div class="copy-box aurora">
+        <p><span class="label">Luz:</span> Luz natural de mañana entrando por una ventana. Sol bajo, rayos suaves y cálidos que iluminan la escena desde un lado. Sombras largas y difusas. Ambiente fresco y luminoso.</p>
+        <p><span class="label">Ambiente:</span> Mesa de madera clara (roble o pino) cerca de una ventana con cortinas blancas translúcidas. Fondo minimalista: pared blanca o tono crema suave.</p>
+        <p><span class="label">Estado de ánimo:</span> Renovación, calma energética, nuevos comienzos.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🕯️ Elementos de la Escena</h4>
+      <div class="copy-box aurora">
+        <p><span class="label">Producto principal:</span> Vela Aurora de pie (180-200g), cera de soja color amarillo dorado/ámbar, textura artesanal rústica con superficie irregular natural. Vela encendida con llama estable y pequeña.</p>
+        <p><span class="label">Soporte:</span> Platito de cerámica beige o barro natural, o base de madera pequeña.</p>
+        <p><span class="label">Acompañamiento:</span> Taza de café humeante (espresso o café con leche), hojas frescas de menta o eucalipto esparcidas sutilmente, quizás una pequeña planta verde (suculenta).</p>
+        <p><span class="label">Fondo:</span> Desenfoque suave. Cortinas blancas, luz matutina, nada saturado.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🎨 Estilo y Paleta</h4>
+      <div class="copy-box aurora">
+        <p><span class="label">Fotografía:</span> Producto cálido, natural, minimalista. Enfoque nítido en la vela, fondo desenfocado (bokeh suave). Ángulo: ligeramente picado o cenital parcial.</p>
+        <p><span class="label">Colores:</span> Dorado/ámbar (vela), crema/madera clara (fondo), verde suave (menta/eucalipto), blanco (cortinas), luz cálida natural.</p>
+        <p><span class="label">Sensación:</span> "Acabas de despertar, el sol entra, encendés esta vela con tu café. El día comienza bien."</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📝 Prompt Final para IA de Imagen</h4>
+      <div class="prompt-final aurora" style="background: linear-gradient(135deg, #b8942f, #8a6d1f);">
+        <p>Professional product photography of an artisan soy wax candle in warm golden-amber color, rustic organic texture, 180g size, sitting on a small ceramic plate beside a steaming espresso cup. Next to it, fresh mint and eucalyptus leaves casually placed. Early morning sunlight streaming through white sheer curtains, soft shadows, warm and fresh atmosphere. Background: minimalist cream wall, wooden table. Shot with shallow depth of field, soft bokeh, editorial lifestyle style. Mood: calm renewal, clean energy, new beginning. --ar 4:5 --style raw</p>
+      </div>
+    </div>
+
+    <div class="nota">
+      <strong>🔄 Variaciones adaptables:</strong> La vela puede aparecer sola (sin taza ni hojas), con su empaque de cartón kraft, en versión miniatura sobre una repisa, o sosteniada en la mano de una persona (desde arriba).
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== EQUILIBRIO ==================== -->
+<div class="producto">
+  <div class="producto-header equilibrio">
+    <h3>✦ Equilibrio</h3>
+    <div class="momento">Tarde · 12:00 – 6:00 PM</div>
+  </div>
+  <div class="producto-body">
+    
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>Notas Aromáticas</h4>
+        <p>Lavanda, romero, geranio</p>
+      </div>
+      <div class="info-box">
+        <h4>Cera</h4>
+        <p>Soja · 180-200 g</p>
+      </div>
+      <div class="info-box">
+        <h4>Factor Diferencial</h4>
+        <p>Calma sin letargo, enfoque sin tensión</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📸 Escenario</h4>
+      <div class="copy-box equilibrio">
+        <p><span class="label">Luz:</span> Luz de media tarde indirecta. Ni tan intensa como el mediodía ni tan cálida como el atardecer. Luz ambiental equilibrada, sombras suaves, ambiente sereno y claro.</p>
+        <p><span class="label">Ambiente:</span> Escritorio o mesa de trabajo ordenada. Plantas pequeñas (lavanda seca o maceta de romero). Fondo neutro: pared blanca o verde suave, quizás un librero desenfocado.</p>
+        <p><span class="label">Estado de ánimo:</span> Centrado, en pausa estratégica, transición consciente entre la mañana y la noche.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🕯️ Elementos de la Escena</h4>
+      <div class="copy-box equilibrio">
+        <p><span class="label">Producto principal:</span> Vela Equilibrio de pie (180-200g), cera de soja color verde salvia/verde lavanda, textura artesanal suave. Vela encendida con llama tranquila.</p>
+        <p><span class="label">Soporte:</span> Base de cerámica tono terracosa o piedra pequeña.</p>
+        <p><span class="label">Acompañamiento:</span> Ramita de lavanda seca, hojitas de romero, un cuaderno abierto o lápiz, anteojos de lectura opcionales.</p>
+        <p><span class="label">Fondo:</span> Mesa de trabajo ordenada, planta verde al fondo, nada caótico. Sensación de "pausa productiva".</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🎨 Estilo y Paleta</h4>
+      <div class="copy-box equilibrio">
+        <p><span class="label">Fotografía:</span> Producto natural, sereno, con conciencia. Enfoque en la vela con fondo de workspace minimalista. Luz suave lateral.</p>
+        <p><span class="label">Colores:</span> Verde salvia (vela), terracota/crema (soporte), púrpura suave (lavanda), blanco/verde pálido (fondo), madera clara.</p>
+        <p><span class="label">Sensación:</span> "Son las 3pm, hacés una pausa, encendés esta vela. El caos se ordena. Podés seguir."</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📝 Prompt Final para IA de Imagen</h4>
+      <div class="prompt-final equilibrio" style="background: linear-gradient(135deg, #5a7a4d, #3a5a2d);">
+        <p>Professional product photography of an artisan soy wax candle in soft sage-green color, smooth organic texture, 180g size, on a terracotta ceramic base. Beside it: dried lavender sprigs, fresh rosemary, and an open notebook with a pencil. Afternoon ambient light, soft shadows, calm and centered atmosphere. Background: minimalist workspace with a green plant, beige wall. Shot with shallow depth of field, editorial lifestyle style. Mood: calm focus, gentle transition, mindful pause. --ar 4:5 --style raw</p>
+      </div>
+    </div>
+
+    <div class="nota">
+      <strong>🔄 Variaciones adaptables:</strong> La vela puede aparecer sola (sin elementos de escritorio), con su empaque, versión miniatura junto a una taza de té, o en una repisa de biblioteca.
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== NÉCTAR ==================== -->
+<div class="producto">
+  <div class="producto-header nectar">
+    <h3>✦ Néctar</h3>
+    <div class="momento">Noche · 7:00 – 11:00 PM</div>
+  </div>
+  <div class="producto-body">
+    
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>Notas Aromáticas</h4>
+        <p>Vainilla, sándalo, manzanilla</p>
+      </div>
+      <div class="info-box">
+        <h4>Cera</h4>
+        <p>Soja · 180-200 g</p>
+      </div>
+      <div class="info-box">
+        <h4>Factor Diferencial</h4>
+        <p>Descanso profundo, envoltura cálida, serenidad</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📸 Escenario</h4>
+      <div class="copy-box nectar">
+        <p><span class="label">Luz:</span> Iluminación nocturna cálida. Luz de la vela como fuente principal + luz ambiental tenue (lámpara de mesa apagada o luz indirecta muy suave). Ambiente íntimo, envolvente, dorado.</p>
+        <p><span class="label">Ambiente:</span> Mesa de luz o mesita de noche junto a la cama, o una mesa baja en un living acogedor. Fondo oscuro o tonos profundos (azul noche, gris carbón cálido).</p>
+        <p><span class="label">Estado de ánimo:</span> Rendirse al descanso, cerrar el día, abrazar la quietud.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🕯️ Elementos de la Escena</h4>
+      <div class="copy-box nectar">
+        <p><span class="label">Producto principal:</span> Vela Néctar de pie (180-200g), cera de soja color azul medianoche/índigo profundo con destellos dorados (sándalo), textura artesanal sedosa. Vela encendida con llama danzante que proyecta sombras cálidas.</p>
+        <p><span class="label">Soporte:</span> Base de vidrio oscuro, cerámica negra o bandeja de metal envejecido.</p>
+        <p><span class="label">Acompañamiento:</span> Taza de té humeante (manzanilla), un libro cerrado, quizás un sahumerio apagado o un pañuelo de seda oscuro.</p>
+        <p><span class="label">Fondo:</span> Oscuro, íntimo. La vela es el punto focal absoluto. Sin elementos distractor.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🎨 Estilo y Paleta</h4>
+      <div class="copy-box nectar">
+        <p><span class="label">Fotografía:</span> Producto editorial nocturno, dramático pero acogedor. La llama es protagonista. Luz cálida y profunda. Sombras marcadas pero suaves.</p>
+        <p><span class="label">Colores:</span> Azul profundo/índigo (vela), dorado/ámbar (lama y reflejos), negro/oscuro (fondo), toques de vapor blanco (té).</p>
+        <p><span class="label">Sensación:</span> "Las 10pm, el mundo afuera se detiene. Esta vela es todo lo que necesitás."</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📝 Prompt Final para IA de Imagen</h4>
+      <div class="prompt-final nectar" style="background: linear-gradient(135deg, #3a4570, #2a3560);">
+        <p>Professional product photography of an artisan soy wax candle in deep midnight-blue color with golden-sandalwood highlights, silky organic texture, 180g size, on a dark glass base. Candle is lit with a warm dancing flame casting soft golden shadows. Beside it: a steaming cup of chamomile tea, a closed book. Dark intimate background, the candle is the warm focal point. Cozy night atmosphere, warm amber and deep blue palette. Shot with dramatic shallow depth of field, editorial nightlife style. Mood: deep rest, warm enclosure, serene transition to quiet. --ar 4:5 --style raw</p>
+      </div>
+    </div>
+
+    <div class="nota">
+      <strong>🔄 Variaciones adaptables:</strong> La vela puede aparecer sola (solo llama y oscuridad), con su empaque de lujo (caja negra), versión miniatura en el baño, o sosteniada en la mano de una persona (cálido y borroso).
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== RITUAL COMPLETO (PACK) ==================== -->
+<div class="producto">
+  <div class="producto-header" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);">
+    <h3>✦ Ritual Completo (Pack)</h3>
+    <div class="momento">Las tres velas del día · Pack 3-en-1</div>
+  </div>
+  <div class="producto-body">
+    
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>Incluye</h4>
+        <p>Aurora + Equilibrio + Néctar</p>
+      </div>
+      <div class="info-box">
+        <h4>Contenido</h4>
+        <p>3 velas de soja 180-200g + tarjeta ritual</p>
+      </div>
+      <div class="info-box">
+        <h4>Factor Diferencial</h4>
+        <p>Sistema diario de intenciones · Ahorro 15%</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📸 Escenario</h4>
+      <div class="copy-box" style="border-left-color: #7b1fa2; background: linear-gradient(135deg, #faf5ff, #f3e5f5);">
+        <p><span class="label">Luz:</span> Luz suave, atemporal. Podría ser luz de ventana neutra (sin definir hora) o iluminación de estudio cálida. Versátil.</p>
+        <p><span class="label">Ambiente:</span> Superficie amplia: mesa de madera, estante o caja de presentación abierta. Fondo limpio: crema, gris suave o tono cálido neutro.</p>
+        <p><span class="label">Estado de ánimo:</span> Sistema completo, ritual integrado, las tres transiciones del día juntas.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>🕯️ Elementos de la Escena</h4>
+      <div class="copy-box" style="border-left-color: #7b1fa2; background: linear-gradient(135deg, #faf5ff, #f3e5f5);">
+        <p><span class="label">Producto principal:</span> Las tres velas alineadas en orden: Aurora (dorado/ámbar, izquierda), Equilibrio (verde salvia, centro), Néctar (azul profundo, derecha). Todas del mismo tamaño (180-200g).</p>
+        <p><span class="label">Soporte:</span> Bandeja de madera alargada, caja de cartón kraft abierta, o disposición sobre una superficie plana limpia.</p>
+        <p><span class="label">Acompañamiento:</span> Tarjeta ritual impresa junto a las velas, quizás una pequeña flor seca o detalle natural sutil.</p>
+      </div>
+    </div>
+
+    <div class="copy-section">
+      <h4>📝 Prompt Final para IA de Imagen</h4>
+      <div class="prompt-final" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);">
+        <p>Professional product photography of three artisan soy wax candles arranged in a row on a wooden tray. Left: golden-amber candle (morning). Center: sage-green candle (afternoon). Right: deep midnight-blue candle (night). All same size (180g), rustic organic texture. Next to them: a printed ritual card. Soft studio lighting, clean neutral background (cream or warm gray). Shot with editorial symmetry, all three candles in sharp focus. Mood: complete daily ritual, integrated system, intentional living. --ar 4:5 --style raw</p>
+      </div>
+    </div>
+
+    <div class="nota">
+      <strong>🔄 Variaciones adaptables:</strong> El pack puede aparecer cerrado (caja cerrada con las tres velas adentro), abierto con las velas fuera, o cada vela individualmente (usar los prompts individuales arriba).
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p><strong>Pura Esencia</strong> · Catálogo digital · Copies para generación de imágenes</p>
+  <p>Documento generado para uso comercial · Pura Esencia © 2026</p>
+</div>
+
+</div>
+</body>
+</html>
